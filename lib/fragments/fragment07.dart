@@ -1,18 +1,32 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import '../dialogs/hero_dialog_route.dart';
-import '../dialogs/page1.dart';
-import '../dialogs/page2.dart';
 
-class Fragment07 extends StatefulWidget {
-  @override
-  _Fragment07State createState() => _Fragment07State();
-}
-
-class _Fragment07State extends State<Fragment07> {
+class Fragment07 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AlertDialog(
+    return MaterialApp(
+        title: 'Trial',
+        home: Scaffold(
+            appBar: AppBar(title: Text('About this application')),
+            body: new MyHome()));
+  }
+}
+
+class MyHome extends StatelessWidget {
+  // Wrapper Widget
+  @override
+  Widget build(BuildContext context) {
+    Future.delayed(Duration.zero, () => showMyDialog(context));
+    return Container(
+      child: Text("About this application"),
+    );
+  }
+
+  showMyDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
         title: Hero(
             tag: "hero2", child: Material(child: Text('Tugas Akhir Eudeka Flutter OSG 4 \n oleh Bagus Ganang Nugroho'))),
         content: Container(
@@ -28,9 +42,8 @@ class _Fragment07State extends State<Fragment07> {
             color: Colors.red,
             child: Icon(Icons.close),
           ),
-        ],
-      ),
-    );
+        ],);
+        });
   }
 }
 
@@ -54,5 +67,4 @@ class CustomLogo extends StatelessWidget {
       ),
     );
   }
-
 }
